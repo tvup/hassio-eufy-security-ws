@@ -12,9 +12,7 @@ RUN \
     jq \
     git \
     && npm install --force \
-    "eufy-security-ws@${EUFY_SECURITY_WS_VERSION}" \
-    && npm install --force \
-    "github:tvup/eufy-security-client#master"
+    "github:tvup/eufy-security-ws#master"
 COPY run.sh /
 RUN chmod a+x /run.sh
 WORKDIR /data
