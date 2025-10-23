@@ -1,8 +1,8 @@
 name: eufy-security-ws
 description: Allows you to control Eufy security devices over websocket by connecting to the Eufy cloud servers and local/remote stations
-version: 1.9.3
-slug: "eufy_security_ws"
-url: https://github.com/bropat/hassio-eufy-security-ws
+version: 1.0.0
+slug: "tvup_eufy_security_ws"
+url: https://github.com/tvup/hassio-eufy-security-ws
 init: false
 arch:
   - aarch64
