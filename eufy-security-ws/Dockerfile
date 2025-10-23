@@ -10,9 +10,11 @@ RUN \
     nodejs \
     npm \
     jq \
-    git \
-    && npm install --force \
-    "github:tvup/eufy-security-ws#master"
+    git
+RUN git clone https://github.com/tvup/eufy-security-ws.git . \
+    && npm install --force github:tvup/eufy-security-client#master \
+    && npm install \
+    && npm run build
 COPY run.sh /
 RUN chmod a+x /run.sh
 WORKDIR /data
