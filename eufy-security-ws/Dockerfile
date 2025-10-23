@@ -10,9 +10,11 @@ RUN \
     nodejs \
     npm \
     jq \
+    git \
     && npm install --force \
-    "eufy-security-ws@${EUFY_SECURITY_WS_VERSION}"
-
+    "eufy-security-ws@${EUFY_SECURITY_WS_VERSION}" \
+    && npm install --force \
+    "github:tvup/eufy-security-client#master"
 COPY run.sh /
 RUN chmod a+x /run.sh
 WORKDIR /data
