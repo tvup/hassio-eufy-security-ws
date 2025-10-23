@@ -1,7 +1,6 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
-ARG EUFY_SECURITY_WS_VERSION
 
 WORKDIR /usr/src/app
 RUN \
@@ -12,8 +11,10 @@ RUN \
     jq \
     git
 RUN git clone https://github.com/tvup/eufy-security-ws.git . \
-    && npm install --force github:tvup/eufy-security-client#master \
     && npm install \
+    && cd node_modules/eufy-security-client \
+    && npm install \
+    && cd ../.. \
     && npm run build
 COPY run.sh /
 RUN chmod a+x /run.sh
