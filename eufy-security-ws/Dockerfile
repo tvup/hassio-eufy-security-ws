@@ -11,7 +11,7 @@ RUN \
     jq \
     git
 RUN npm install --force \
-    "github:tvup/eufy-security-ws#6df65e1"
+    "github:tvup/eufy-security-ws#40f568b"
 COPY run.sh /
 RUN chmod a+x /run.sh
 WORKDIR /data
