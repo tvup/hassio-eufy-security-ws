@@ -1,17 +1,17 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
-
 WORKDIR /usr/src/app
+
 RUN \
     set -x \
     && apk add --no-cache \
     nodejs \
     npm \
-    jq \
-    git
+    jq
+
 RUN npm install --force \
-    "github:tvup/eufy-security-ws#40f568b"
+    "github:tvup/eufy-security-ws#v1.10.0"
 COPY run.sh /
 RUN chmod a+x /run.sh
 WORKDIR /data

@@ -1,4 +1,4 @@
-# 2Official eufy-security-ws Home Assistant add-on repository
+# Official eufy-security-ws Home Assistant add-on repository
 
 ![Logo](eufy-security-ws/logo.png)
 
