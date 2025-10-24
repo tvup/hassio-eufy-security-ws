@@ -7,18 +7,36 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - arch: amd64
+            platform: linux/amd64
+          - arch: aarch64
+            platform: linux/arm64
+          - arch: armhf
+            platform: linux/arm/v6
+          - arch: armv7
+            platform: linux/arm/v7
     steps:
       - uses: actions/checkout@v4
+
+      - uses: docker/setup-qemu-action@v3
+
+      - uses: docker/setup-buildx-action@v3
 
       - uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      - name: Publish
-        uses: home-assistant/builder@master
+      - name: Build and push
+        uses: docker/build-push-action@v6
         with:
-          args: |
-            --all \
-            --target eufy-security-ws \
-            --docker-hub tvup
+          context: ./eufy-security-ws
+          file: ./eufy-security-ws/Dockerfile
+          platforms: ${{ matrix.platform }}
+          push: true
+          tags: tvup/hassio-eufy-security-ws-${{ matrix.arch }}:${{ github.ref_name }}
+          build-args: |
+            BUILD_FROM=ghcr.io/home-assistant/${{ matrix.arch }}-base:stable
