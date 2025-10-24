@@ -11,14 +11,16 @@ jobs:
     strategy:
       matrix:
         include:
-          - arch: amd64
-            platform: linux/amd64
-          - arch: aarch64
-            platform: linux/arm64
           - arch: armhf
             platform: linux/arm/v6
           - arch: armv7
             platform: linux/arm/v7
+          - arch: aarch64
+            platform: linux/arm64
+          - arch: amd64
+            platform: linux/amd64
+          - arch: i386
+            platform: linux/386
     steps:
       - uses: actions/checkout@v4
 
@@ -40,4 +42,4 @@ jobs:
           push: true
           tags: tvup/hassio-eufy-security-ws-${{ matrix.arch }}:${{ github.ref_name }}
           build-args: |
-            BUILD_FROM=ghcr.io/home-assistant/${{ matrix.arch }}-base:stable
+            BUILD_FROM=ghcr.io/home-assistant/${{ matrix.arch }}-base:3.22
