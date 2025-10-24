@@ -34,12 +34,14 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
       - name: Build and push
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v5
         with:
           context: ./eufy-security-ws
           file: ./eufy-security-ws/Dockerfile
           platforms: ${{ matrix.platform }}
           push: true
-          tags: tvup/hassio-eufy-security-ws-${{ matrix.arch }}:${{ github.ref_name }}
+          tags: |
+            tvup/${{ matrix.arch }}-addon-eufy-security-ws:${{ github.ref_name }}
+            tvup/${{ matrix.arch }}-addon-eufy-security-ws:latest
           build-args: |
             BUILD_FROM=ghcr.io/home-assistant/${{ matrix.arch }}-base:3.22
