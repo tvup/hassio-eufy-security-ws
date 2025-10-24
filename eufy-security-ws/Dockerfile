@@ -14,7 +14,7 @@ RUN \
 RUN npm install -g typescript@5.8.3
 
 RUN npm install --force \
-    "github:tvup/eufy-security-ws#v1.10.9"
+    "github:tvup/eufy-security-ws#v1.10.10"
 COPY run.sh /
 RUN chmod a+x /run.sh
 WORKDIR /data
