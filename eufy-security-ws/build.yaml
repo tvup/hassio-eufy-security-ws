@@ -8,5 +8,3 @@ codenotary:
   #https://github.com/codenotary/cas/issues/296
   #signer: patrick.broetto@gmail.com
   base_image: notary@home-assistant.io
-args:
-  EUFY_SECURITY_WS_VERSION: 1.9.3
