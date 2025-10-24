@@ -8,7 +8,8 @@ RUN \
     && apk add --no-cache \
     nodejs \
     npm \
-    jq
+    jq \
+    git
 
 RUN npm install --force \
     "github:tvup/eufy-security-ws#v1.10.0"
