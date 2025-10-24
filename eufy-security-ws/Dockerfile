@@ -11,6 +11,8 @@ RUN \
     jq \
     git
 
+RUN npm install -g typescript@5.8.3
+
 RUN npm install --force \
     "github:tvup/eufy-security-ws#v1.10.0"
 COPY run.sh /
